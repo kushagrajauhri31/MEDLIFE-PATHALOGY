@@ -1,17 +1,17 @@
 from django.urls import path,include
-from .import views
+from account.views import Register,login,logout,cart,view_profile,remove_cart_item,profile_Update
+from . import views
 
 urlpatterns = [
-    path("",views.home,name="home"),
-    path("test_details/",views.test_details,name="test_details"),
-    path("feedback/",views.feedback,name="feedback"),
-    path("ambulance/",views.ambulance,name="ambulance"),
-    path("doctors/",views.doctors,name="doctors"),
-    path("contactus/",views.contactus,name="contact"),
-    path("appointment/",views.appointment,name="appointment"),
-    path("upload_csv_report/",views.upload_csv_report,name="upload_csv_report"),
-    
-
-    
-    
+    path("register",Register,name="reg"),
+    path("login",login,name="login"),
+    path("logout",logout,name="logout"),
+    path("cart",cart,name="cart"),
+    path("view_profile/",view_profile,name="view_profile"),
+    path("profile_Update",profile_Update,name="profile_Update"),
+    path('remove-cart-item', remove_cart_item, name='remove_cart_item'),
+    path('checkout/', views.payment_checkout, name='checkout_payment'),
+    path('create_payment/', views.create_payment, name='create_payment'),
+    path('execute_payment/', views.execute_payment, name='execute_payment'),
+    #  path('download_report_file/<int:file_id>/', download_report_file, name='download_report_file'),
 ]
